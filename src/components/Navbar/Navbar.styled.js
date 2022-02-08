@@ -36,7 +36,7 @@ width:80%;
 justify-content:space-between;
  
 
-button h3{
+button{
     font-size:17px;
     font-weight:600;
     color:${root.boldGrey};
@@ -58,8 +58,30 @@ button{
     margin:0 4rem;
 }
 
+@media (max-width: 1200px) {
+    width:auto;
+    div{
+        flex-direction: row-reverse;
+        
+    }
+  }
+
 `
 
 export const IosAppIcon = styled.a`
-margin-right:1.25rem;
+    margin-right:1.25rem;
+
+    @media (max-width: 1200px) {
+    display: none;
+  }
+
+
+`
+
+export const IosAppIcon2 = styled.a`
+    @media (max-width: 1200px) {
+    display: none;
+  }
+
+
 `

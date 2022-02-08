@@ -3,17 +3,23 @@ import GlobalStyle from './assets/global';
 import Navbar from './components/Navbar/Navbar'
 import { store } from './store'
 import { Provider } from 'react-redux'
+import { HomeContainer } from './pages/Home/HomeContainer';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
 
-  console.log('appdan-store', store);
   return (
     <Provider store={store}>
-      <GlobalStyle />
-      <Navbar />
-      <h1>app js</h1>
+      <Router>
+        <GlobalStyle />
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={HomeContainer} />
+        </Switch>
+      </Router>
     </Provider>)
 };
 
 export default App;
+
 

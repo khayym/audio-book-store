@@ -1,20 +1,15 @@
 import React from 'react';
 import { BsArrowDownShort } from 'react-icons/bs'
 import { Search } from '../SearchInput/Search';
-import { IosAppIcon, LogoWrapper, NavbarContainer, SearchAndAppContainer } from './Navbar.styled';
+import { IosAppIcon, IosAppIcon2, LogoWrapper, NavbarContainer, SearchAndAppContainer } from './Navbar.styled';
 import LinksDropdown from './components/LinksDropdown';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { opener } from '../../features/modal/modalSlice'
 
 
 const Navbar = () => {
 
-
-
-    const { opener: { openStatus } } = useSelector((state) => state)
     const dispatch = useDispatch()
-
-    console.log(openStatus);
 
     return (
         <div>
@@ -27,7 +22,7 @@ const Navbar = () => {
                 <SearchAndAppContainer>
                     <div>
                         <button onClick={() => dispatch(opener())}>
-                            Janrs
+                            Genres
                             <BsArrowDownShort />
                         </button>
                         <Search />
@@ -37,9 +32,9 @@ const Navbar = () => {
                         <IosAppIcon href="">
                             <img src="https://abuk.com.ua/catalog/assets/img/app-store.svg" alt="" />
                         </IosAppIcon>
-                        <a href="">
+                        <IosAppIcon2 href="">
                             <img src="https://abuk.com.ua/catalog/assets/img/googleplay_icon.svg" alt="" />
-                        </a>
+                        </IosAppIcon2>
                     </div>
                 </SearchAndAppContainer>
             </NavbarContainer>

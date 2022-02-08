@@ -29,4 +29,17 @@ input{
 }
 
 
+@media (max-width: 1200px) {
+    margin-right:5rem;
+  }
+
+  @media (max-width: 1000px) {
+    margin-right:3rem;
+  }
+
+  @media (max-width: 955px) {
+    width:70%;
+    margin-right:1rem;
+  }
+
 `
