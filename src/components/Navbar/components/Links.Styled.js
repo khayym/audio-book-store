@@ -7,6 +7,7 @@ export const LinkContainer = styled.div`
     position:absolute;
     width:100%;
     transition:opacity 0.2s ;
+    z-index:999;
     ${porps => porps.openStatus ?
 
         css`
