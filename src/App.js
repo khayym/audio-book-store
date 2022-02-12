@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { HomeContainer } from './pages/Home/HomeContainer';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllBooks from './pages/AllBooks/AllBooks';
+import Book from './pages/Book/Book';
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={HomeContainer} />
           <Route path="/allbook" component={AllBooks} />
+          <Route path="/book/:id" component={Book} />
         </Switch>
       </Router>
     </Provider>)

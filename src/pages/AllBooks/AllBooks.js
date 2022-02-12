@@ -1,51 +1,44 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components';
-import useLazyLoad from "../../hooks/useLazyLoad"
+import { BookContainer, LoaderDiv, Spinner } from './AllBooks.Styled';
 
 const AllBooks = () => {
     const bookRef = useRef()
     const [limit, setLimit] = useState(15);
     const [books, setBooks] = useState([])
+    const [loader, setLoading] = useState(false);
 
     const getNewBooks = () => {
-        setLimit(prev => prev += 10);
-        // console.log(limit);
+        setLimit(prev => prev += 15);
     }
+
+    useEffect(() => {
+        setLoading(true);
+
+        const axiosBooks = async () => {
+            const response = await axios(`https://abuk.com.ua/api/web/books?order=uploads_count%20desc&limit=${limit}`)
+            setTimeout(() => {
+                setBooks(response.data.books)
+                setLoading(false);
+            }, 1000)
+        };
+        axiosBooks();
+    }, [limit]);
 
 
     useEffect(() => {
-        const axiosBooks = async () => {
-            const response = await axios(`https://abuk.com.ua/api/web/books?order=uploads_count%20desc&limit=${limit}`)
-            setBooks(response.data.books)
-        };
-        axiosBooks();
-    }, [limit])
-
-    // useEffect(() => {
-
-    //     const loadObserver = new IntersectionObserver(() => console.log('isldeir'), { rootMargin: '2px' })
-    //     loadObserver.observe(bookRef.current)
-
-    // })
+        console.log('bhhh');
+        const loadObserver = new IntersectionObserver(getNewBooks, { rootMargin: '10px' })
+        loadObserver.observe(bookRef.current)
+    }, [])
 
 
-    // const triggerRef = useRef(null);
-    // const onGrabData = (limit) => {
-    //     // This would be where you'll call your API
-    //     // setLimit(prev => prev += 10);
-    // };
-    // const { data, loading } = useLazyLoad({ triggerRef, onGrabData });
-
-
-
-    console.log(data);
 
     return (
         <div>
             <BookContainer>
                 {
-                    data.map((e) => {
+                    books.map((e) => {
                         return (
                             <div key={e.id}>
                                 <img src={e.picture_urls.main} alt="" />
@@ -57,43 +50,12 @@ const AllBooks = () => {
                     })
                 }
             </BookContainer>
-            <LoaderDiv ref={triggerRef}>
-                <p>guncelleme gelir</p>
-            </LoaderDiv>
-            {/* <button onClick={getNewBooks}>daha cox goster</button> */}
+            {loader && <Spinner src={'https://abuk.com.ua/catalog/assets/img/spinner.gif'} />}
+            <LoaderDiv ref={bookRef}></LoaderDiv>
         </div>
     )
+
 }
 
 export default AllBooks
 
-
-const BookContainer = styled.div`
-display: flex;
-flex-wrap: wrap;
-margin: 3rem 5rem 1rem 5rem;
-
-
-    img{
-        width: 198px;
-        height:198px;
-        padding-bottom:10px;
-        border-radius:10px;
-    }
-
-    h1{
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    div{
-        width:200px;
-    }
-`
-
-const LoaderDiv = styled.div`
-
-    background-color:red;
-
-`

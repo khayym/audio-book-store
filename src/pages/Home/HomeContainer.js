@@ -24,7 +24,6 @@ export const HomeContainer = () => {
 
 
     return <div openStatus={openStatus}>
-
         <h1>Home</h1>
         <SliderContainer>
             <Slick child={data} />

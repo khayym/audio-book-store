@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useCallback } from "react";
 import debounce from "lodash/debounce";
 
-const INTERSECTION_THRESHOLD = 5;
+const INTERSECTION_THRESHOLD = 1;
 const LOAD_DELAY_MS = 500;
 
 const reducer = (state, action) => {
@@ -17,7 +17,6 @@ const reducer = (state, action) => {
                 ...state,
                 loading: false,
                 data: [...state.data],
-                currentPage: state.currentPage + 10
             };
         }
         default:
@@ -28,7 +27,7 @@ const reducer = (state, action) => {
 const useLazyLoad = ({ triggerRef, onGrabData, options }) => {
     const [state, dispatch] = useReducer(reducer, {
         loading: false,
-        currentPage: 1,
+        currentPage: 10,
         data: []
     });
 
