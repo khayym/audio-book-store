@@ -1,33 +1,28 @@
-import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchBooks } from '../../features/allBooks/allbooksSlice';
 import { BookContainer, LoaderDiv, Spinner } from './AllBooks.Styled';
+
 
 const AllBooks = () => {
     const bookRef = useRef()
-    const [limit, setLimit] = useState(15);
-    const [books, setBooks] = useState([])
-    const [loader, setLoading] = useState(false);
+    const [limit, setLimit] = useState(20);
+
+    const dispatch = useDispatch();
+    const { data, loading } = useSelector(state => state.allbooks);
 
     const getNewBooks = () => {
-        setLimit(prev => prev += 15);
+        setLimit(prev => prev += 5);
     }
 
     useEffect(() => {
-        setLoading(true);
-
-        const axiosBooks = async () => {
-            const response = await axios(`https://abuk.com.ua/api/web/books?order=uploads_count%20desc&limit=${limit}`)
-            setTimeout(() => {
-                setBooks(response.data.books)
-                setLoading(false);
-            }, 1000)
-        };
-        axiosBooks();
-    }, [limit]);
+        dispatch(fetchBooks(limit))
+    }, [limit])
 
 
     useEffect(() => {
-        console.log('bhhh');
         const loadObserver = new IntersectionObserver(getNewBooks, { rootMargin: '10px' })
         loadObserver.observe(bookRef.current)
     }, [])
@@ -38,19 +33,21 @@ const AllBooks = () => {
         <div>
             <BookContainer>
                 {
-                    books.map((e) => {
+                    data.map((e) => {
                         return (
-                            <div key={e.id}>
-                                <img src={e.picture_urls.main} alt="" />
-                                <h1>{e.title}</h1>
-                                <i>{e.authors[0].name}</i>
+                            <Link key={e.id} to={`/book/${e.id}`}>
+                                <div key={e.id}>
+                                    <img src={e.picture_urls.main} alt="" />
+                                    <h1>{e.title}</h1>
+                                    <i>{e.authors[0].name}</i>
 
-                            </div>
+                                </div>
+                            </Link >
                         )
                     })
                 }
             </BookContainer>
-            {loader && <Spinner src={'https://abuk.com.ua/catalog/assets/img/spinner.gif'} />}
+            {loading && <Spinner src={'https://abuk.com.ua/catalog/assets/img/spinner.gif'} />}
             <LoaderDiv ref={bookRef}></LoaderDiv>
         </div>
     )

@@ -1,32 +1,78 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Slider from "react-slick"
-import { settings } from "./setting"
-import { Imger, LittleDiv } from "./Slick.styled"
+import { settings, settingsMini } from "./setting"
+import { H2, Img, LittleDiv, P, TextHeader, SlicWrapper } from "./Slick.styled"
 
-const Slick = ({ child }) => {
-    return (
-        <Slider {...settings}>
-            {
-                child.map(e => {
-                    return (
-                        <Link key={e.id} to={`/book/${e.id}`}>
-                            <LittleDiv key={e.id}>
-                                <Imger src={e.picture_urls.main}></Imger>
-                                <div>
-                                    <h2>{e.title}</h2>
-                                    <h2>{e.authors[0].name}</h2>
-                                    <h3>{e.uploads_count}</h3>
-                                </div>
+const Slick = ({ child, option }) => {
 
-                            </LittleDiv>
-                        </ Link>
-                    )
-                })
-            }
-        </Slider>
+    switch (option) {
+        case 'STANDART':
+            return (
+                <SlicWrapper>
+                    <TextHeader>Вибір АБУК</TextHeader>
+                    <Slider {...settings}>
+                        {
+                            child.map(({ id, picture_urls: { main }, authors, title }) => {
+                                return (
+                                    <Link key={id} to={`/book/${id}`}>
+                                        <LittleDiv optionstyle={option} key={id}>
+                                            <Img src={main} optionstyle={option}></Img>
+                                            <div>
+                                                <H2 optionstyle={option} >{title}</H2>
+                                                <P>
+                                                    <span>
+                                                        {authors[0].name}
+                                                    </span>
+                                                </P>
+                                            </div>
+                                        </LittleDiv>
+                                    </ Link>
+                                )
+                            })
+                        }
+                    </Slider>
+                </SlicWrapper>
+            )
 
-    )
+        case 'MINI':
+            return (
+                <SlicWrapper>
+                    <TextHeader>Новi</TextHeader>
+                    <Slider {...settingsMini}>
+                        {
+                            child.map(e => {
+                                return (
+                                    <Link key={e.id} to={`/book/${e.id}`}>
+                                        <LittleDiv optionstyle={option} key={e.id}>
+                                            <Img src={e.picture_urls.main} optionstyle={option}></Img>
+                                            <div>
+                                                <H2 optionstyle={option}>{e.title}</H2>
+                                                <P>
+                                                    <span>
+                                                        {e.authors[0].name}
+                                                    </span>
+                                                </P>
+                                            </div>
+                                        </LittleDiv>
+                                    </ Link>
+                                )
+                            })
+                        }
+                    </Slider>
+                </SlicWrapper>
+            )
+
+        case 'LENT':
+            return (
+                <h1>Xeyyammmmmmmm</h1>
+            )
+
+        default:
+            return <h1>Xeyyammmmmmmm</h1>;
+
+    }
+
 }
 
 export default Slick

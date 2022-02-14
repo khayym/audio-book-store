@@ -6,6 +6,6 @@ import modalReducer from './features/modal/modalSlice'
 export const store = configureStore({
     reducer: {
         opener: modalReducer,
-        setAllBooks: allBooksSlice,
+        allbooks: allBooksSlice,
     },
 })

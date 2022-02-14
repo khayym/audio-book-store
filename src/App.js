@@ -7,6 +7,7 @@ import { HomeContainer } from './pages/Home/HomeContainer';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllBooks from './pages/AllBooks/AllBooks';
 import Book from './pages/Book/Book';
+import { Container } from './assets/App.Styled';
 
 const App = () => {
 
@@ -16,14 +17,18 @@ const App = () => {
         <GlobalStyle />
         <Navbar />
         <Switch>
-          <Route exact path="/" component={HomeContainer} />
-          <Route path="/allbook" component={AllBooks} />
-          <Route path="/book/:id" component={Book} />
+          <Container>
+            <Route exact path="/" component={HomeContainer} />
+            <Route path="/allbook" component={AllBooks} />
+            <Route path="/book/:id" component={Book} />
+          </Container>
         </Switch>
       </Router>
     </Provider>)
 };
 
 export default App;
+
+
 
 
