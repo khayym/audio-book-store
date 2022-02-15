@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import Slider from "react-slick"
 import { settings, settingsMini } from "./setting"
 import { H2, Img, LittleDiv, P, TextHeader, SlicWrapper } from "./Slick.styled"
+import LentSlick from './LentSlick/LentSlick'
 
-const Slick = ({ child, option }) => {
+const Slick = ({ child, option, genre, header }) => {
 
     switch (option) {
         case 'STANDART':
@@ -13,7 +14,7 @@ const Slick = ({ child, option }) => {
                     <TextHeader>Вибір АБУК</TextHeader>
                     <Slider {...settings}>
                         {
-                            child.map(({ id, picture_urls: { main }, authors, title }) => {
+                            child && child.map(({ id, picture: { main }, authors, title }) => {
                                 return (
                                     <Link key={id} to={`/book/${id}`}>
                                         <LittleDiv optionstyle={option} key={id}>
@@ -38,10 +39,10 @@ const Slick = ({ child, option }) => {
         case 'MINI':
             return (
                 <SlicWrapper>
-                    <TextHeader>Новi</TextHeader>
+                    <TextHeader>{header}</TextHeader>
                     <Slider {...settingsMini}>
                         {
-                            child.map(e => {
+                            child && child.map(e => {
                                 return (
                                     <Link key={e.id} to={`/book/${e.id}`}>
                                         <LittleDiv optionstyle={option} key={e.id}>
@@ -62,11 +63,8 @@ const Slick = ({ child, option }) => {
                     </Slider>
                 </SlicWrapper>
             )
-
         case 'LENT':
-            return (
-                <h1>Xeyyammmmmmmm</h1>
-            )
+            return <LentSlick genre={genre} />
 
         default:
             return <h1>Xeyyammmmmmmm</h1>;
@@ -76,5 +74,3 @@ const Slick = ({ child, option }) => {
 }
 
 export default Slick
-
-

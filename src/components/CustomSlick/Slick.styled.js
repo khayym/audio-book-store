@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components"
 
 export const SlicWrapper = styled.div`
-    margin-bottom:40px;
+    margin-bottom:50px;
+
 `
 export const LittleDiv = styled.div`
 padding:0 0.938rem;
@@ -107,5 +108,6 @@ export const TextHeader = styled.h2`
     margin-bottom: 24px;
     margin-left:1rem;
     font-weight:600;
+
 `
 

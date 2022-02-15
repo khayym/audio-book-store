@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import styled from 'styled-components'
 
 const Book = ({ match: { params: { id } } }) => {
     console.log(id);
 
     const [data, setBook] = useState({});
+    const aze = useSelector(state => state.book);
+
 
     useEffect(() => {
 
@@ -13,11 +16,11 @@ const Book = ({ match: { params: { id } } }) => {
             const { data: { book } } = await axios(`https://abuk.com.ua/api/web/books/${id}/`);
             setBook(book)
         }
-
         getBookByID(id);
+
+        console.log(aze);
     }, [id])
 
-    console.log(data);
     return (
         <Section>
             <h1>Name: {data.title}</h1>

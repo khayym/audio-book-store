@@ -6,12 +6,14 @@ import { fetchBooks } from '../../features/allBooks/allbooksSlice';
 import { BookContainer, LoaderDiv, Spinner } from './AllBooks.Styled';
 
 
+
 const AllBooks = () => {
     const bookRef = useRef()
     const [limit, setLimit] = useState(20);
-
-    const dispatch = useDispatch();
     const { data, loading } = useSelector(state => state.allbooks);
+    const dispatch = useDispatch();
+
+
 
     const getNewBooks = () => {
         setLimit(prev => prev += 5);
