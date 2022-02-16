@@ -8,7 +8,8 @@ export const modalSlice = createSlice({
     name: 'opener',
     initialState,
     reducers: {
-        opener: (state) => {
+        opener: (state, dispatch) => {
+            // typeof (dispatch.payload) != 'undefined' ? state.openStatus = dispatch.payload :
             (!state.openStatus) ? state.openStatus = true : state.openStatus = false;
         }
     },

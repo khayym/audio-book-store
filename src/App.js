@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllBooks from './pages/AllBooks/AllBooks';
 import Book from './pages/Book/Book';
 import { Container } from './assets/App.Styled';
+import Genre from './pages/Genre/Genre';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
             <Route exact path="/" component={HomeContainer} />
             <Route path="/allbook" component={AllBooks} />
             <Route path="/book/:id" component={Book} />
+            <Route path="/genre/:id" component={Genre} />
           </Container>
         </Switch>
       </Router>

@@ -4,12 +4,14 @@ import { Search } from '../SearchInput/Search';
 import { IosAppIcon, IosAppIcon2, LogoWrapper, NavbarContainer, SearchAndAppContainer } from './Navbar.styled';
 import LinksDropdown from './components/LinksDropdown';
 import { useDispatch } from 'react-redux'
-import { opener } from '../../features/modal/modalSlice'
+import { opener } from '../../features/modal/modalSlice';
+
 
 
 const Navbar = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
 
     return (
         <div>
@@ -21,7 +23,7 @@ const Navbar = () => {
 
                 <SearchAndAppContainer>
                     <div>
-                        <button onClick={() => dispatch(opener())}>
+                        <button className='openCloserBtn' onClick={() => dispatch(opener())} >
                             Genres
                             <BsArrowDownShort />
                         </button>

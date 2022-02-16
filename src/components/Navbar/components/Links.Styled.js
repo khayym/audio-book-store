@@ -8,18 +8,18 @@ export const LinkContainer = styled.div`
     width:100%;
     transition:opacity 0.2s ;
     z-index:999;
-    ${porps => porps.openStatus ?
+    ${porps => porps.openStatus === true ?
 
         css`
-        visibility:visible;
+        display:block;
         box-shadow: 0px 500px 0px 500px #00000065;
         -webkit-box-shadow: 0px 500px 0px 500px #00000065;
         -moz-box-shadow: 0px 500px 0px 500px #00000065;;
         background-color:#f8f8f8; `
-        :
 
+        :
         css`
-        visibility:hidden;
+        display:none;
         opacity:0%;
          `};
 `
