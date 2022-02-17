@@ -67,7 +67,7 @@ const Slick = ({ child, option, genre, header }) => {
             return <LentSlick genre={genre} />
 
         default:
-            return <h1>Xeyyammmmmmmm</h1>;
+            return '';
 
     }
 

@@ -1,16 +1,15 @@
 import React from 'react';
-import { BsArrowDownShort } from 'react-icons/bs'
 import { Search } from '../SearchInput/Search';
-import { IosAppIcon, IosAppIcon2, LogoWrapper, NavbarContainer, SearchAndAppContainer } from './Navbar.styled';
+import { Icon, IosAppIcon, IosAppIcon2, LogoWrapper, NavbarContainer, SearchAndAppContainer } from './Navbar.styled';
 import LinksDropdown from './components/LinksDropdown';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { opener } from '../../features/modal/modalSlice';
-
 
 
 const Navbar = () => {
 
     const dispatch = useDispatch();
+    const { opener: { openStatus } } = useSelector((state) => state)
 
 
     return (
@@ -23,9 +22,9 @@ const Navbar = () => {
 
                 <SearchAndAppContainer>
                     <div>
-                        <button className='openCloserBtn' onClick={() => dispatch(opener())} >
+                        <button onClick={() => dispatch(opener())} >
                             Genres
-                            <BsArrowDownShort />
+                            <Icon modeltype={openStatus.toString()} />
                         </button>
                         <Search />
                     </div>

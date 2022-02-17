@@ -1,36 +1,35 @@
+import { Box, Modal } from '@mui/material';
 import styled from 'styled-components';
-import { css } from 'styled-components';
 
+export const Modals = styled(Modal)`
+     .MuiBackdrop-root{
+        background-color:transparent;
+       
+     }
+`
 
-export const LinkContainer = styled.div`
-    height:20rem;
+export const LinkContainer = styled(Box)`
+    height:auto;
     position:absolute;
     width:100%;
-    transition:opacity 0.2s ;
+    transition: all 1s linear;
     z-index:999;
-    ${porps => porps.openStatus === true ?
+    background-color:#f8f8f8;
+    top:5rem;
+    box-shadow: 0px 500px 0px 500px #00000065 !important;
+    -webkit-box-shadow: 0px 500px 0px 500px #00000065 !important;
+    -moz-box-shadow: 0px 500px 0px 500px #00000065!important;
+    /* transition:opacity 0.2s ; */
 
-        css`
-        display:block;
-        box-shadow: 0px 500px 0px 500px #00000065;
-        -webkit-box-shadow: 0px 500px 0px 500px #00000065;
-        -moz-box-shadow: 0px 500px 0px 500px #00000065;;
-        background-color:#f8f8f8; `
-
-        :
-        css`
-        display:none;
-        opacity:0%;
-         `};
 `
 
 export const Ul = styled.ul`
     display:flex;
     flex-wrap: wrap;
-    padding: 30px 165px;
+    padding: 30px 165px 50px 165px;
     
     li{
-        margin:10px;
+        margin: 15px 50px 15px 0;
     }
 
     a{
@@ -42,7 +41,7 @@ export const Ul = styled.ul`
     color: #464650;
     border-bottom: 2px solid transparent;
     transition:all 0.3s;
-
+    font-weight:600;
 
     &:hover{
             border-bottom: 2px solid #fe7664;

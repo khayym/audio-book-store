@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import root from "../../assets/root"
+import { IoIosArrowDown } from 'react-icons/io'
+import { css } from "styled-components"
 
 export const NavbarContainer = styled.div`
 /* height:5.092rem; */
@@ -28,6 +30,18 @@ img{
 }
 
 `
+export const Icon = styled(IoIosArrowDown)`
+transition:all 0.3s;
+    ${props => props.modeltype === 'true' ?
+        css`
+        transform:rotate(180deg);
+    `:
+        css`
+         transform:rotate(0deg);
+`}
+   /* transform: ${props => props.modeltype = 'true' ? "rotate(45deg)" : "rotate(75deg)"} */
+`
+
 
 export const SearchAndAppContainer = styled.div`
 display:flex;

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { IoIosArrowDown } from 'react-icons/io'
 
 export const SlicWrapper = styled.div`
     margin-bottom:50px;
@@ -12,10 +13,12 @@ display:flex;
 flex-direction:column;
 `
 
-export const SampleNextArrow = styled.div`
+export const SampleNextArrow = styled(IoIosArrowDown)`
 color:#000;
-top:40%;
-right: -25px;
+ top:40%;
+ right: -25px;
+ transform: rotate(269deg);
+
    &:hover{
    color: #000;
    outline: none;
@@ -23,7 +26,6 @@ right: -25px;
    }
 
    &:before {
-       content: '>';
        font-weight:900;
        font-size:20px;
        color:#000;
@@ -33,9 +35,7 @@ right: -25px;
 
 export const SamplePrewArrow = styled(SampleNextArrow)`
 left:-20px;
-   &:before {
-       content: '<';
-   }
+transform: rotate(-269deg);
 `
 
 
