@@ -30,9 +30,9 @@ export const HomeContainer = () => {
     }, [])
 
 
-    const { opener: { openStatus } } = useSelector((state) => state)
+    const { opener: { openstatus } } = useSelector((state) => state)
 
-    return <div openStatus={openStatus}>
+    return <div openstatus={openstatus.toString()}>
         <div>
             <Slick child={catalog} option='STANDART' />
             <Slick child={new_books} option='MINI' header='Новi' />

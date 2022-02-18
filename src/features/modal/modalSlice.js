@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    openStatus: false,
+    openstatus: false,
 }
 
 export const modalSlice = createSlice({
@@ -10,7 +10,7 @@ export const modalSlice = createSlice({
     reducers: {
         opener: (state, dispatch) => {
             // typeof (dispatch.payload) != 'undefined' ? state.openStatus = dispatch.payload :
-            (!state.openStatus) ? state.openStatus = true : state.openStatus = false;
+            (!state.openstatus) ? state.openstatus = true : state.openstatus = false;
         }
     },
 })

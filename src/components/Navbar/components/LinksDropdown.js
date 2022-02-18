@@ -9,7 +9,7 @@ import { LinkContainer, Modals, Ul } from './Links.Styled'
 
 
 const LinksDropdown = (props) => {
-    const { opener: { openStatus } } = useSelector((state) => state)
+    const { opener: { openstatus } } = useSelector((state) => state)
     const { genres: { data } } = useSelector((state) => state)
     const dispatch = useDispatch();
 
@@ -27,13 +27,12 @@ const LinksDropdown = (props) => {
     return (
 
         <Modals
-            open={openStatus}
+            open={openstatus}
             onClose={() => dispatch(opener())}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Fade in={openStatus}>
-
+            <Fade in={openstatus}>
                 <LinkContainer >
                     <Ul>
                         {

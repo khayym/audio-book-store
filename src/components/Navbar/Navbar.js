@@ -9,7 +9,7 @@ import { opener } from '../../features/modal/modalSlice';
 const Navbar = () => {
 
     const dispatch = useDispatch();
-    const { opener: { openStatus } } = useSelector((state) => state)
+    const { opener: { openstatus } } = useSelector((state) => state)
 
 
     return (
@@ -24,7 +24,7 @@ const Navbar = () => {
                     <div>
                         <button onClick={() => dispatch(opener())} >
                             Genres
-                            <Icon modeltype={openStatus.toString()} />
+                            <Icon modeltype={openstatus.toString()} />
                         </button>
                         <Search />
                     </div>
