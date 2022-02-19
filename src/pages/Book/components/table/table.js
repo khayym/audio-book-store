@@ -1,10 +1,9 @@
 import React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
-import styled from 'styled-components';
+import { TableCellName, TableCellValue, TCdateAndDir } from './table.Styled';
 
 export const BookTable = ({ bookShortInfo }) => {
     return (
@@ -29,7 +28,7 @@ export const BookTable = ({ bookShortInfo }) => {
                     </TableRow>
                     <TableRow>
                         <TableCellName component="th" scope="row">ВИДАННЯ</TableCellName>
-                        <TCdateAndDir component="th" scope="row">{bookShortInfo.year + '-' + bookShortInfo.second_year}</TCdateAndDir>
+                        <TCdateAndDir component="th" scope="row">{bookShortInfo.year + '-' + bookShortInfo.second_year} pp</TCdateAndDir>
                     </TableRow>
                 </TableBody>
             </Table>
@@ -38,21 +37,3 @@ export const BookTable = ({ bookShortInfo }) => {
 }
 
 
-const TableCellName = styled(TableCell)`
-    font-size: 11px !important;
-    color: #90909e!important;
-    text-transform: uppercase!important;
-    padding: 5px 15px 5px 0!important;
-    letter-spacing: .55px!important;
-    border-bottom:0px transparent !important;
-`
-
-const TCdateAndDir = styled(TableCellName)`
-    font-size:15px !important;
-    vertical-align: baseline;
-   
-`
-
-const TableCellValue = styled(TCdateAndDir)`
-    color:#100f1d !important;
-`

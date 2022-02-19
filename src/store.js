@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import allBooksSlice from './features/allBooks/allbooksSlice'
+import audioSlice from './features/audio/audioSlice'
 import bookSlice from './features/book/bookSlice'
 import genresFetchingReduser from './features/dropDown/genresSlice'
 import bookDataFecthing from './features/home/homeSlice'
@@ -13,5 +14,6 @@ export const store = configureStore({
         book: bookSlice,
         genres: genresFetchingReduser,
         home: bookDataFecthing,
+        audio: audioSlice,
     },
 })

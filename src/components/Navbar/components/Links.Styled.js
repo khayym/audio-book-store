@@ -15,7 +15,7 @@ export const LinkContainer = styled(Box)`
     transition: all 1s linear;
     z-index:999;
     background-color:#f8f8f8;
-    top:5rem;
+    top:6.65rem;
     box-shadow: 0px 500px 0px 500px #00000065 !important;
     -webkit-box-shadow: 0px 500px 0px 500px #00000065 !important;
     -moz-box-shadow: 0px 500px 0px 500px #00000065!important;

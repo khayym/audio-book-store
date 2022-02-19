@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Search } from '../SearchInput/Search';
 import { Icon, IosAppIcon, IosAppIcon2, LogoWrapper, NavbarContainer, SearchAndAppContainer } from './Navbar.styled';
 import LinksDropdown from './components/LinksDropdown';
 import { useDispatch, useSelector } from 'react-redux'
 import { opener } from '../../features/modal/modalSlice';
+import CustomAudioPlayer from '../AudioPlayerCustom/CustomAudioPlayer';
+import styled from 'styled-components';
 
 
 const Navbar = () => {
 
     const dispatch = useDispatch();
     const { opener: { openstatus } } = useSelector((state) => state)
-
 
     return (
         <div>
@@ -28,15 +29,15 @@ const Navbar = () => {
                         </button>
                         <Search />
                     </div>
-
-                    <div>
-                        <IosAppIcon href="">
+                    <LeftWrapper>
+                        <CustomAudioPlayer />
+                        {/* <IosAppIcon href="">
                             <img src="https://abuk.com.ua/catalog/assets/img/app-store.svg" alt="" />
                         </IosAppIcon>
                         <IosAppIcon2 href="">
                             <img src="https://abuk.com.ua/catalog/assets/img/googleplay_icon.svg" alt="" />
-                        </IosAppIcon2>
-                    </div>
+                        </IosAppIcon2> */}
+                    </LeftWrapper>
                 </SearchAndAppContainer>
             </NavbarContainer>
             <LinksDropdown />
@@ -45,3 +46,8 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const LeftWrapper = styled.div`
+    background-color:#917b7b;
+    width: 100%;
+`
