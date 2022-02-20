@@ -12,6 +12,7 @@ const Navbar = () => {
 
     const dispatch = useDispatch();
     const { opener: { openstatus } } = useSelector((state) => state)
+    const { audioStatus } = useSelector(state => state.audio);
 
     return (
         <div>
@@ -29,15 +30,32 @@ const Navbar = () => {
                         </button>
                         <Search />
                     </div>
-                    <LeftWrapper>
-                        <CustomAudioPlayer />
-                        {/* <IosAppIcon href="">
-                            <img src="https://abuk.com.ua/catalog/assets/img/app-store.svg" alt="" />
-                        </IosAppIcon>
-                        <IosAppIcon2 href="">
-                            <img src="https://abuk.com.ua/catalog/assets/img/googleplay_icon.svg" alt="" />
-                        </IosAppIcon2> */}
-                    </LeftWrapper>
+
+                    {
+                        audioStatus ?
+                            <LeftWrapper>
+                                <div>
+                                    <SmallImg src={audioStatus.picture_urls.small} alt="" />
+                                    <SmallDiv>
+                                        <SmallTitle>{audioStatus.title}</SmallTitle>
+                                        <SmallAuthor>{audioStatus.authors[0].name}</SmallAuthor>
+                                    </SmallDiv>
+                                </div>
+                                <CustomAudioPlayer />
+                            </ LeftWrapper>
+                            :
+                            <LeftWrapper>
+                                <IosAppIcon href="">
+                                    <img src="https://abuk.com.ua/catalog/assets/img/app-store.svg" alt="" />
+                                </IosAppIcon>
+                                <IosAppIcon2 href="">
+                                    <img src="https://abuk.com.ua/catalog/assets/img/googleplay_icon.svg" alt="" />
+                                </IosAppIcon2>
+                            </LeftWrapper >
+                    }
+
+
+
                 </SearchAndAppContainer>
             </NavbarContainer>
             <LinksDropdown />
@@ -48,6 +66,38 @@ const Navbar = () => {
 export default Navbar;
 
 const LeftWrapper = styled.div`
-    background-color:#917b7b;
+    display:flex;
+    justify-content:end;
     width: 100%;
+    transition: transform .3s,-webkit-transform .3s;
+    .rhap_container{
+        padding:0 1rem;
+    }
+
+`
+
+const SmallImg = styled.img`
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+`
+
+const SmallTitle = styled.p`
+    font-size: 12px;
+    margin-bottom: 0!important;
+    margin-left: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 120px;
+    font-weight: bold;
+    color:#464650;
+`
+
+const SmallAuthor = styled(SmallTitle)`
+    margin-top:.5rem;
+`
+const SmallDiv = styled.div`
+    display:flex;
+    flex-direction:column;
 `

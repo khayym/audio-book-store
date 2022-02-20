@@ -1,64 +1,49 @@
-import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { fetchBooks } from '../../features/allBooks/allbooksSlice';
+import { fetchBooksByGenre } from '../../features/genre/genreSlice';
+import { Spinner } from '../AllBooks/AllBooks.Styled'
+import { BookImg, BookListContainer, BookSquare, Div, H1 } from './Genre.Styled';
 
 
-const Genre = (props) => {
-    const bookRef = useRef()
-    const [limit, setLimit] = useState(20);
-    const [book_by_genre, setBook_by_genre] = useState([]);
-
-
-    console.log('prop', props);
-
-    const id = props.match.params.id;
-
-    console.log(id);
+const Genre = ({ match: { params: { id } } }) => {
+    const [limit, setLimit] = useState(10);
+    const { data, loading, genreName } = useSelector(state => state.getBookByGenre);
+    const dispatch = useDispatch();
 
     const getNewBooks = () => {
-        setLimit(prev => prev += 5);
+        setLimit(prev => prev += 10);
     }
 
     useEffect(() => {
-        const axiosGetBookByGenre = async () => {
-            const data = await axios(`https://abuk.com.ua/api/web/books?order=created_at%20desc&genre_${id}&limit=${limit}`)
-            console.log(data);
-        }
-        axiosGetBookByGenre();
-    }, [id])
+        dispatch(fetchBooksByGenre({ limit, id }))
+    }, [id, limit, dispatch])
 
-
-    // useEffect(() => {
-    //     const loadObserver = new IntersectionObserver(getNewBooks, { rootMargin: '10px' })
-    //     loadObserver.observe(bookRef.current)
-    // }, [])
 
 
 
     return (
         <div>
-            {/* <BookContainer> */}
-            {/* {
-                    data.map((e) => {
-                        return (
-                            <Link key={e.id} to={`/book/${e.id}`}>
-                                <div key={e.id}>
-                                    <img src={e.picture_urls.main} alt="" />
-                                    <h1>{e.title}</h1>
-                                    <i>{e.authors[0].name}</i>
-
-                                </div>
-                            </Link >
-                        )
-                    })
-                } */}
-            <h1>genre</h1>
-            {/* </BookContainer> */}
-            {/* {loading && <Spinner src={'https://abuk.com.ua/catalog/assets/img/spinner.gif'} />} */}
-            {/* <LoaderDiv ref={bookRef}></LoaderDiv> */}
+            <BookListContainer>
+                <H1>{genreName}</H1>
+                <Div>
+                    {
+                        data.map((e) => {
+                            return (
+                                <BookSquare key={e.id} to={`/book/${e.id}`}>
+                                    <BookImg src={e.picture_urls.main} alt="" />
+                                    <div>
+                                        <h1>{e.title}</h1>
+                                        <i>{e.authors[0].name}</i>
+                                    </div>
+                                </BookSquare >
+                            )
+                        })
+                    }
+                </Div>
+                <button onClick={getNewBooks}>Get mode</button>
+            </BookListContainer>
+            {loading && <Spinner src={'https://abuk.com.ua/catalog/assets/img/spinner.gif'} />}
         </div>
     )
 

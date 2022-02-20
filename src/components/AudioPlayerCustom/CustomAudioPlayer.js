@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 import 'react-h5-audio-player/lib/styles.css';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
 import { PlayButtonEW } from '../playButton/PlayButton.Styled';
-import { CAudioPlayer, PauseButtonCustom } from './CustomAudioPlayer.Styled';
+import { AudioWrapper, CAudioPlayer, PauseButtonCustom } from './CustomAudioPlayer.Styled';
 
 
 const CustomIcons = {
@@ -23,7 +22,7 @@ const CustomAudioPlayer = () => {
 
     return (
         <AudioWrapper>
-            <CAudioPlayer layout="horizontal-reverse" src={audioStatus}
+            <CAudioPlayer layout="horizontal-reverse" src={audioStatus.sample.audio_url}
                 showJumpControls={false}
                 customVolumeControls={[]}
                 customAdditionalControls={[]}
@@ -38,6 +37,3 @@ const CustomAudioPlayer = () => {
 export default CustomAudioPlayer
 
 
-const AudioWrapper = styled.div`
-    background-color:#d49999;
-`

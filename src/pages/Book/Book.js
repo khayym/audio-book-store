@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components'
-import CustomAudioPlayer from '../../components/AudioPlayerCustom/CustomAudioPlayer';
 import Buttons from '../../components/buttons/Button';
 import PlayButton from '../../components/playButton/PlayButton';
 import { setAudioUrl } from '../../features/audio/audioSlice';
@@ -18,6 +17,7 @@ const Book = ({ match: { params: { id } } }) => {
 
 
     const dispatch = useDispatch()
+
     useEffect(() => {
 
 
@@ -40,7 +40,7 @@ const Book = ({ match: { params: { id } } }) => {
             <Section>
                 <ImgDiv>
                     <img src={data.value.picture_urls.main} alt="" />
-                    <ButtonPlayAudio onClick={() => dispatch(setAudioUrl(data.value.sample.audio_url))}>
+                    <ButtonPlayAudio onClick={() => dispatch(setAudioUrl(data.value))}>
                         <PlayButton>Прослухати уривок</PlayButton>
                     </ButtonPlayAudio>
                 </ImgDiv>

@@ -21,7 +21,7 @@ const AllBooks = () => {
 
     useEffect(() => {
         dispatch(fetchBooks(limit))
-    }, [limit])
+    }, [limit, dispatch]);
 
 
     useEffect(() => {

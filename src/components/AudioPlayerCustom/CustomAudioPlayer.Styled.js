@@ -10,8 +10,11 @@ export const PauseButtonCustom = styled(BsFillPauseCircleFill)`
     line-height: 38px;
     font-size: 25px;
     color:#ff5740 !important;
-`
 
+`
+export const AudioWrapper = styled.div`
+   
+`
 
 export const CAudioPlayer = styled(AudioPlayer)`
     border:0px solid transparent !important;
@@ -29,7 +32,7 @@ export const CAudioPlayer = styled(AudioPlayer)`
     color:#9999;
     font-size:13px;
     margin-left:0.7rem;
-    margin-top:0.2rem;
+    margin-top:0px
     }
 
     .rhap_total-time{
@@ -39,7 +42,7 @@ export const CAudioPlayer = styled(AudioPlayer)`
     margin-right: 0.8rem;
     color:#9999;
     font-size:13px;
-    margin-top:0.2rem;
+    margin-top:0px;
     }
 
     .rhap_progress-bar{
@@ -66,15 +69,17 @@ export const CAudioPlayer = styled(AudioPlayer)`
     flex-wrap: nowrap;
     align-items: center;
     margin-left: 0.3rem;
+    width:14rem;
+    border: 0px solid transparent;
     /* border:1px solid #000; */
     }
 
-    /* .rhap_main-controls{
-    flex: 0 1 auto;
-    display: flex;
-    justify-content: flex-end !important;
-    align-items: center !important;
-    } */
+    .rhap_main-controls{
+    button{
+        margin:0px;
+    }
+    }
+   
 
 
     .rhap_play-pause-button {
@@ -91,5 +96,6 @@ export const CAudioPlayer = styled(AudioPlayer)`
     margin-right: 0px;
     justify-content:flex-end !important;
     }
+
 
 `
