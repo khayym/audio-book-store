@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 
 export const Div = styled.div`
 width: 22rem;
@@ -11,13 +13,7 @@ outline: 0;
 animation: 1s fadein;
 
 
-img{
-    max-width: 100%;
-    border-radius: 10px;
-    vertical-align: middle;
-    border-style: none;
 
-}
 
 h2{
     bottom: 15px;
@@ -31,4 +27,11 @@ h2{
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
+`
+
+export const LentImg = styled(LazyLoadImage)`
+        max-width: 100%;
+    border-radius: 10px;
+    vertical-align: middle;
+    border-style: none;
 `

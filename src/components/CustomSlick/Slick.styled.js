@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
 import { IoIosArrowDown } from 'react-icons/io'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const SlicWrapper = styled.div`
     margin-bottom:50px;
@@ -39,7 +40,7 @@ transform: rotate(-269deg);
 `
 
 
-export const Img = styled.img`
+export const Img = styled(LazyLoadImage)`
 
     ${props => props.optionstyle === 'STANDART' ?
         css`

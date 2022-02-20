@@ -1,6 +1,7 @@
 import { CircularProgress } from "@mui/material"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const BookListContainer = styled.div`
 display:flex;
@@ -34,7 +35,7 @@ outline: 0;
 margin-bottom: 30px;
 `
 
-export const BookImg = styled.img`
+export const BookImg = styled(LazyLoadImage)`
 max-width: 100%;
 margin-bottom: 10px;
 border-radius: 10px;

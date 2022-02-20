@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { getFetchingBooks } from '../../features/home/homeSlice';
 
+
 export const HomeContainer = () => {
 
     const { genres: { data } } = useSelector((state) => state)

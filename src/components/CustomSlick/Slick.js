@@ -5,6 +5,8 @@ import { settings, settingsMini } from "./setting"
 import { H2, Img, LittleDiv, P, TextHeader, SlicWrapper } from "./Slick.styled"
 import LentSlick from './LentSlick/LentSlick'
 
+
+
 const Slick = ({ child, option, genre, header }) => {
 
     switch (option) {

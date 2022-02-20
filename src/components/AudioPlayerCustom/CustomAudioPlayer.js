@@ -15,7 +15,7 @@ const CustomAudioPlayer = () => {
     const { audioStatus } = useSelector(state => state.audio);
 
     useEffect(() => {
-        console.log(audioStatus);
+
 
     }, [audioStatus])
 
