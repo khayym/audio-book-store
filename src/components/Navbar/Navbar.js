@@ -23,7 +23,7 @@ const Navbar = () => {
                     <Link to='/'>
                         <img src="https://abuk.com.ua/catalog/assets/img/logo.svg" alt="" />
                     </Link>
-                    <AllBookLogo to='/allbook'>All books</AllBookLogo>
+                    <AllBookLogo to='/allbook'>Всі книжки</AllBookLogo>
                 </LogoWrapper>
 
                 <SearchAndAppContainer>

@@ -4,7 +4,7 @@ import GoogleIcon from '../../assets/img/icons/google.svg';
 import { Btn } from './button.styled';
 
 const Buttons = ({ children, icontype }) => {
-    console.log(icontype);
+
     return (
         <div>
             <Btn variant="contained">

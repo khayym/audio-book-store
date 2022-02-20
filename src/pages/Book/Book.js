@@ -11,13 +11,9 @@ import { BookTable } from './components/table/table';
 
 
 const Book = ({ match: { params: { id } } }) => {
-    console.log(id);
 
     const [data, setBook] = useState({ pending: true, value: undefined });
-
-
     const dispatch = useDispatch()
-
     useEffect(() => {
 
 
@@ -27,10 +23,9 @@ const Book = ({ match: { params: { id } } }) => {
         }
 
         getBookByID(id);
-        // setBook(getBookByID);
     }, [id])
 
-    console.log(data.value);
+
 
     return (
 
