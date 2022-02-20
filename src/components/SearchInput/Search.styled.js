@@ -19,9 +19,9 @@ box-shadow:0 3px 4px 0 rgb(0 0 0 / 10%);
 input{
     border:1px solid transparent;
     color:${root.grey};
-    padding: 0.75rem 2.625rem 0.75rem 0.2rem;
+    padding: 0.75rem 2.625rem 0.75rem 1.1rem;
     width: 100%;
-  
+    font-size:13px;
 
     &:focus{
         outline: none;

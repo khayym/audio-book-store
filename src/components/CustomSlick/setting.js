@@ -1,4 +1,5 @@
-import { SampleNextArrow, SamplePrewArrow } from "./Slick.styled";
+import { SlickArrowLeft, SlickArrowRight } from "../../helpers/SlickArrow";
+
 
 export const settings = {
     infinite: true,
@@ -8,8 +9,8 @@ export const settings = {
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrewArrow />,
+    nextArrow: <SlickArrowRight />,
+    prevArrow: <SlickArrowLeft />,
 
     responsive: [
         {
@@ -49,8 +50,8 @@ export const settingsMini = {
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrewArrow />,
+    nextArrow: <SlickArrowRight />,
+    prevArrow: <SlickArrowLeft />,
 
     responsive: [
         {
@@ -89,8 +90,8 @@ export const settingLent = {
     slidesToShow: 3,
     slidesToScroll: 3,
     initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrewArrow />,
+    nextArrow: <SlickArrowRight />,
+    prevArrow: <SlickArrowLeft />,
 
     responsive: [
         {

@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { opener } from '../../features/modal/modalSlice';
 import CustomAudioPlayer from '../AudioPlayerCustom/CustomAudioPlayer';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import root from '../../assets/root';
 
 
 const Navbar = () => {
@@ -18,8 +20,10 @@ const Navbar = () => {
         <div>
             <NavbarContainer>
                 <LogoWrapper>
-                    <img src="https://abuk.com.ua/catalog/assets/img/logo.svg" alt="" />
-                    <h2>All books</h2>
+                    <Link to='/'>
+                        <img src="https://abuk.com.ua/catalog/assets/img/logo.svg" alt="" />
+                    </Link>
+                    <AllBookLogo to='/allbook'>All books</AllBookLogo>
                 </LogoWrapper>
 
                 <SearchAndAppContainer>
@@ -100,4 +104,10 @@ const SmallAuthor = styled(SmallTitle)`
 const SmallDiv = styled.div`
     display:flex;
     flex-direction:column;
+`
+
+const AllBookLogo = styled(Link)`
+  padding-left:3.125rem;
+    font-size:25px;
+    color:${root.orange};
 `

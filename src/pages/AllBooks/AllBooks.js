@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { H2, P } from '../../components/CustomSlick/Slick.styled';
 import { fetchBooks } from '../../features/allBooks/allbooksSlice';
-import { BookContainer, LoaderDiv, Spinner } from './AllBooks.Styled';
+import { BookImg, BookSquare, Div } from '../Genre/Genre.Styled';
+import { LoaderDiv, Spinner } from './AllBooks.Styled';
 
 
 
@@ -33,22 +34,26 @@ const AllBooks = () => {
 
     return (
         <div>
-            <BookContainer>
+            <Div>
                 {
                     data.map((e) => {
                         return (
-                            <Link key={e.id} to={`/book/${e.id}`}>
+                            <BookSquare key={e.id} to={`/book/${e.id}`}>
                                 <div key={e.id}>
-                                    <img src={e.picture_urls.main} alt="" />
-                                    <h1>{e.title}</h1>
-                                    <i>{e.authors[0].name}</i>
+                                    <BookImg src={e.picture_urls.main} alt="" />
+                                    <H2>{e.title}</H2>
+                                    <P>
+                                        <span>
+                                            {e.authors[0].name}
+                                        </span>
+                                    </P>
 
                                 </div>
-                            </Link >
+                            </BookSquare >
                         )
                     })
                 }
-            </BookContainer>
+            </Div>
             {loading && <Spinner src={'https://abuk.com.ua/catalog/assets/img/spinner.gif'} />}
             <LoaderDiv ref={bookRef}></LoaderDiv>
         </div>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { H2, P } from '../../components/CustomSlick/Slick.styled';
 import { fetchBooksByGenre } from '../../features/genre/genreSlice';
-import { Spinner } from '../AllBooks/AllBooks.Styled'
-import { BookImg, BookListContainer, BookSquare, Div, H1 } from './Genre.Styled';
-
+import { BookImg, BookListContainer, BookSquare, Div, H1, LoaderIndicator } from './Genre.Styled';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const Genre = ({ match: { params: { id } } }) => {
     const [limit, setLimit] = useState(10);
@@ -19,9 +19,6 @@ const Genre = ({ match: { params: { id } } }) => {
         dispatch(fetchBooksByGenre({ limit, id }))
     }, [id, limit, dispatch])
 
-
-
-
     return (
         <div>
             <BookListContainer>
@@ -33,17 +30,27 @@ const Genre = ({ match: { params: { id } } }) => {
                                 <BookSquare key={e.id} to={`/book/${e.id}`}>
                                     <BookImg src={e.picture_urls.main} alt="" />
                                     <div>
-                                        <h1>{e.title}</h1>
-                                        <i>{e.authors[0].name}</i>
+                                        <H2>{e.title}</H2>
+                                        <P>
+                                            <span>
+                                                {e.authors[0].name}
+                                            </span>
+                                        </P>
                                     </div>
                                 </BookSquare >
                             )
                         })
                     }
                 </Div>
-                <button onClick={getNewBooks}>Get mode</button>
+                <LoadingButton
+                    onClick={getNewBooks}
+                    loading={loading}
+                    loadingIndicator={<LoaderIndicator />}
+                >
+                    More
+                </LoadingButton>
             </BookListContainer>
-            {loading && <Spinner src={'https://abuk.com.ua/catalog/assets/img/spinner.gif'} />}
+
         </div>
     )
 

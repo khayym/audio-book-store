@@ -7,7 +7,7 @@ margin: 3rem 5rem 1rem 5rem;
 
 
 img{
-    width: 198px;
+width: 198px;
 height:198px;
 padding-bottom:10px;
 border-radius:10px;
@@ -25,14 +25,13 @@ div{
 `
 
 export const LoaderDiv = styled.img`
-height:3rem;
-background-color:transparent;
 width:100%;
-border:1px solid #000;
 `
 
 export const Spinner = styled.img`
 width: 70px;
 height: 70px;
-margin: auto;
+margin: 0 auto;
+display:flex;
+align-items: center;
 `

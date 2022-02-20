@@ -13,8 +13,8 @@ const LentSlick = ({ genre }) => {
                 {
                     genre.map(e => {
                         return (
-                            <Link to='/ddd' key={e.id}>
-                                <Div  >
+                            <Link to={`/genre/id=${e.id}`} key={e.id}>
+                                <Div>
                                     <img src={e.picture_urls.main} alt="" />
                                     <h2>{e.name}</h2>
                                 </Div>

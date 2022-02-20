@@ -18,12 +18,6 @@ display:flex;
 align-items: center;
 width:20%;
 
-h2{
-    padding-left:3.125rem;
-    font-size:25px;
-    color:${root.orange};
-}
-
 img{
     height:2.904rem;
     width:6.25rem;

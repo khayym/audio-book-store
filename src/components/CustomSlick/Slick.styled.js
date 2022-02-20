@@ -77,7 +77,7 @@ ${props => props.optionstyle === 'STANDART' ?
         `
         :
         css`
-          color:#464650;
+            color:#464650;
             font-size: 15px;
             margin-top: 0;
             margin-bottom: 0.5rem;
@@ -93,7 +93,7 @@ ${props => props.optionstyle === 'STANDART' ?
 `
 
 export const P = styled.p`
-        font-size: 15px;
+    font-size: 15px;
     color: #9999a5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
